@@ -3,9 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WiredbrainCoffeeApp.view"
+             xmlns:local="clr-namespace:WiredbrainCoffeeApp.view" 
+             xmlns:converter="clr-namespace:WiredbrainCoffeeApp.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <converter:NavigationSideToGridColumnConverter 
+            x:Key="NsToGcCon"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -13,21 +19,24 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <!--Customer List-->
-        <Grid x:Name="customerListGrid"
-         Background="#777">
+        <Grid Grid.Column="{Binding Path=NavigationSide,
+            Converter={StaticResource NsToGcCon}}"
+            Background="#777">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal">
-                <Button Margin="10" Width="75" Click="BtnAdd_Click">
+                <Button Margin="10" Width="75" Command="{Binding AddCommand}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Images/add.png"  Height="18" Margin="0 0 5 0 "/>
                         <TextBlock Text="Add"/>
                     </StackPanel>
                 </Button>
-                <Button Content="Delete" Width="75" Margin="0 10 10 10"/>
-                <Button  Margin="0 10 10 10" Click="BtnMove_Click">
+                <Button Content="Delete" Width="75" Margin="0 10 10 10"
+                        Command="{Binding DeleteCommand}"
+                        />
+                <Button  Margin="0 10 10 10" Command="{Binding MoveNavigationCommand}">
                     <Image Source="/Images/move.png"  Height="18" />
                 </Button>
             </StackPanel>

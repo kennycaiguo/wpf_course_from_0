@@ -36,25 +36,6 @@ namespace WiredbrainCoffeeApp.view
         {
            await _viewModel.LoadAsync();
         }
-
-        private void BtnMove_Click(object sender, RoutedEventArgs e)
-        {
-            //写法1，需要强制类型转换，不太好
-            //var column = (int)customerListGrid.GetValue(Grid.ColumnProperty);
-            //var col = column == 0 ? 2 : 0;
-            //customerListGrid.SetValue(Grid.ColumnProperty, col);
-
-            //写法2.使用Grid类的静态方法，不需要转换类型，比较好
-            var column = Grid.GetColumn(customerListGrid);
-            var col = column == 0 ? 2 : 0;
-            Grid.SetColumn(customerListGrid, col);
-
-
-        }
-
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            _viewModel.Add(); //注意：操作事件需要使用视图模型，不要直接操作，否则mvvm就没有意义
-        }
+        
     }
 }

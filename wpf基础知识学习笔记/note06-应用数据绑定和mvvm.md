@@ -508,9 +508,85 @@ namespace WiredbrainCoffeeApp.ViewModel
 
 ### 运行程序，效果是一样的（略）
 
+# 11.绑定Grid.Column属性
+
+## 我们以前是在CustomerView的后台文件里面通过代码来实现切换网格列的操作。这里我们与可以实现绑定网格列的操作，我们需要把BtnMove_Click事件处理函数里面的代码删除，如何通过视图模型来实现移动，我们先写一个对没有定义的函数MoveNavigation的调用，然后按alt+enter在视图模型里面创建这个函数
+
+![{BBE45327-BA81-4CBC-9100-5D641E57AD39}](./note06-应用数据绑定和mvvm.assets/{BBE45327-BA81-4CBC-9100-5D641E57AD39}.png)
 
 
 
+## 然后我们转到视图模型里面实现这个方法，这里需要先添加一个NavigationColumn属性
+
+![image-20260601110319565](./note06-应用数据绑定和mvvm.assets/image-20260601110319565.png)
 
 
+
+![image-20260601110413516](./note06-应用数据绑定和mvvm.assets/image-20260601110413516.png)
+
+
+
+## 然后我们需要把它转化为完整属性
+
+![image-20260601110537902](./note06-应用数据绑定和mvvm.assets/image-20260601110537902.png)
+
+## 然后我们需要修改他的setter，在里面发送属性变更通知
+
+![image-20260601110822582](./note06-应用数据绑定和mvvm.assets/image-20260601110822582.png)
+
+## 然后我们把navigationColumn字段改名为_navigationColumn
+
+![image-20260601110941325](./note06-应用数据绑定和mvvm.assets/image-20260601110941325.png)
+
+![image-20260601110956969](./note06-应用数据绑定和mvvm.assets/image-20260601110956969.png)
+
+## 回到CustomerView.xaml文件，把Grid的x:Name属性删除添加Grid.Column的属性
+
+![image-20260601111630727](./note06-应用数据绑定和mvvm.assets/image-20260601111630727.png)
+
+# 12.使用IValueConverter转换值
+
+## 我们前面实现的移动客户列表的代码，但是这个0和2比较难理解，我们可以使用一个枚举，我们先创建一个NavigationSide枚举
+
+![image-20260601112446599](./note06-应用数据绑定和mvvm.assets/image-20260601112446599.png)
+
+## 然后我们把NavigationColumn的类型个NavigationSide，_navigationColumn字段也需要修改为相同的类型
+
+![image-20260601112612461](./note06-应用数据绑定和mvvm.assets/image-20260601112612461.png)
+
+## 然后把他的名称也改为NavigationSide
+
+![image-20260601112849205](./note06-应用数据绑定和mvvm.assets/image-20260601112849205.png)
+
+## 注意，字段也需要修改
+
+![image-20260601113042439](./note06-应用数据绑定和mvvm.assets/image-20260601113042439.png)
+
+![image-20260601113118507](./note06-应用数据绑定和mvvm.assets/image-20260601113118507.png)
+
+## 然后我们需要修改MoveNavigation函数的代码
+
+![image-20260601113507804](./note06-应用数据绑定和mvvm.assets/image-20260601113507804.png)
+
+## 回到CustomerView.xaml,修改一下Grid的绑定
+
+![image-20260601113828780](./note06-应用数据绑定和mvvm.assets/image-20260601113828780.png)
+
+## 此时运行程序，虽然程序可以运行，但是点击移动按钮没有任何效果，那因为xaml中无法把枚举转化为int32，那么怎么解决？我们需要创建一个转换器，在项目文件上面点击右键-》添加-》文件夹，创建一个Converter文件夹
+
+![image-20260601114149932](./note06-应用数据绑定和mvvm.assets/image-20260601114149932.png)
+
+## 然后在里面新建一个类：NavigationSideToGridColumnConveter，注意需要把它改为public还有就是需要实现IValueConverter接口
+
+![image-20260601114623452](./note06-应用数据绑定和mvvm.assets/image-20260601114623452.png)
+
+## 注意：我们这里使用的是单向绑定，只需要实现Convert方法
+
+![image-20260601115256814](./note06-应用数据绑定和mvvm.assets/image-20260601115256814.png)
+
+## 那么，问题来了，我们在xaml里面如何使用这个转换器呢？答案是需要把它作为资源来使用，我们需要在CustomerView.xaml中添加UserControl.Resources标签，在里面引用它
+
+![image-20260601123545578](./note06-应用数据绑定和mvvm.assets/image-20260601123545578.png)
+
+![image-20260601123625726](./note06-应用数据绑定和mvvm.assets/image-20260601123625726.png)
 
