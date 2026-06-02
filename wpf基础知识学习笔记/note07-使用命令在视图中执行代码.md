@@ -143,3 +143,64 @@ namespace WiredbrainCoffeeApp.Command
 ## 然后我们创建一个MoveNavigationCommand属性在构造函数中用它来接受一个DelegateCommand对象，参数是我们的MoveNavigation方法
 
 ![image-20260601175400753](./note07-使用命令在视图中执行代码.assets/image-20260601175400753.png)
+
+## 现在需要在CustomersView.xaml中给按钮绑定我们的AddCommand和MoveNavigationCommand，我们先进入这个视图的后台文件，把那两个按钮的事件处理函数删除，因为我们现在不需要他们
+
+![image-20260601180002268](./note07-使用命令在视图中执行代码.assets/image-20260601180002268.png)
+
+## 回到CustomerView.xaml文件，给按钮绑定Command属性并且删除Click事件绑定，因为已经不需要了
+
+![image-20260601180532777](./note07-使用命令在视图中执行代码.assets/image-20260601180532777.png)
+
+## 运行程序一切正常
+
+![image-20260601180636886](./note07-使用命令在视图中执行代码.assets/image-20260601180636886.png)
+
+![image-20260601180657453](./note07-使用命令在视图中执行代码.assets/image-20260601180657453.png)
+
+![image-20260601180716099](./note07-使用命令在视图中执行代码.assets/image-20260601180716099.png)
+
+![image-20260601180731400](./note07-使用命令在视图中执行代码.assets/image-20260601180731400.png)
+
+# 4.触发Commands CanExecuteChanged事件
+
+## 在前面的课程中，我们已经为添加和移动按钮添加了命令绑定，这里我们需要给Delete按钮添加命令绑定，注意这个Delete按钮默认是不能够使用的，只有当我们选中一位客户，它才能够启用，因为只有选中的才能够删除，否则逻辑是不对的。我们进入CustomersView.xaml文件，我们给删除按钮绑定一个DeleteCommand属性，
+
+![image-20260601181631834](./note07-使用命令在视图中执行代码.assets/image-20260601181631834.png)
+
+## 此时它还没有创建出来，我们可以在视图模型类里面创建他的定义，我们创建一个DeleteCommand属性并且在构造函数里面用它来接受2个DeletagateCommand实例，一个是我们的Delete方法，另外一个是CanDelete方法，
+
+![image-20260601182548808](./note07-使用命令在视图中执行代码.assets/image-20260601182548808.png)
+
+## 然后我们需要定义这两个方法
+
+![image-20260601182619023](./note07-使用命令在视图中执行代码.assets/image-20260601182619023.png)
+
+
+
+![image-20260601183228337](./note07-使用命令在视图中执行代码.assets/image-20260601183228337.png)
+
+## 此时运行应用程序，刚开始delete按钮是灰色的，这个很正常因为我们没有选中然后客户
+
+![image-20260601183333760](./note07-使用命令在视图中执行代码.assets/image-20260601183333760.png)
+
+## 我们选中一个客户，分析按钮仍然是灰色的。这是为什么？
+
+![image-20260601183415326](./note07-使用命令在视图中执行代码.assets/image-20260601183415326.png)
+
+## 原因是我们还没有触发通知机制，视图不知道CanDelete已经修改，我们找到SelectedCustomer属性，在他的setter代码在添加触CanExecutChanged的代码，也就是调用DeleteCommand.RaiseCanExecuteChanged()
+
+![image-20260601183934684](./note07-使用命令在视图中执行代码.assets/image-20260601183934684.png)
+
+## 运行程序，刚开始，按钮是禁用的
+
+![image-20260601184208781](./note07-使用命令在视图中执行代码.assets/image-20260601184208781.png)
+
+## 我们选中一位客户，此时按钮变为可用状态
+
+![image-20260601184241761](./note07-使用命令在视图中执行代码.assets/image-20260601184241761.png)
+
+## 点击删除按钮，客户就会被删除，同时按钮再次变灰，因为我们在代码里面设置了删除一位客户后，选中客户就会清空。
+
+![image-20260601184314980](./note07-使用命令在视图中执行代码.assets/image-20260601184314980.png)
+
