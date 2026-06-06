@@ -23,10 +23,13 @@ namespace WiredbrainCoffeeApp.ViewModel
             set { 
                 _selectedCustomer = value; 
                 //RaisePropertyChanged(nameof(SelectedCustomer)); //触发属性更改事件
+                RaisePropertyChanged(nameof(IsCustomerSelected)); //触发IsCustomerSelected属性更改事件
                 RaisePropertyChanged(); //触发属性更改事件
                 DeleteCommand.RaiseCanExecuteChanged(); //触发删除按钮的属性更改通知
             } 
         }
+        //定义一个IsCustomerSelected属性,和SelectedCustomer有关系
+        public bool IsCustomerSelected => SelectedCustomer != null;
 
         public NavigationSide NavigationSide{ 
             get => _navigationSide;
