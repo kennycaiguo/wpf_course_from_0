@@ -49,7 +49,7 @@ namespace WiredbrainCoffeeApp.ViewModel
         private CustomerItemViewModel? _selectedCustomer;
         private NavigationSide _navigationSide;
 
-        public async Task LoadAsync()
+        public async override Task LoadAsync()
         {
             if (Customers.Any())
             {

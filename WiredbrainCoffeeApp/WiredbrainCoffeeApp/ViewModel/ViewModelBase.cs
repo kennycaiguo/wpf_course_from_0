@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-
-
 namespace WiredbrainCoffeeApp.ViewModel
 {
     public class ViewModelBase : INotifyPropertyChanged
@@ -16,5 +14,7 @@ namespace WiredbrainCoffeeApp.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public virtual  Task LoadAsync() => Task.CompletedTask;
     }
 }
