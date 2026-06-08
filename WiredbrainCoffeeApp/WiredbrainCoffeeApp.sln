@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37314.3 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiredbrainCoffeeApp", "WiredbrainCoffeeApp\WiredbrainCoffeeApp.csproj", "{58B62310-B8AF-4537-AC3E-13A12EB23E05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiredbrainCoffeeApp", "WiredbrainCoffeeApp\WiredbrainCoffeeApp.csproj", "{0BD3BCFD-D89A-44C6-A8D5-91A095BD0DCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{58B62310-B8AF-4537-AC3E-13A12EB23E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58B62310-B8AF-4537-AC3E-13A12EB23E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58B62310-B8AF-4537-AC3E-13A12EB23E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58B62310-B8AF-4537-AC3E-13A12EB23E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BD3BCFD-D89A-44C6-A8D5-91A095BD0DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD3BCFD-D89A-44C6-A8D5-91A095BD0DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD3BCFD-D89A-44C6-A8D5-91A095BD0DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD3BCFD-D89A-44C6-A8D5-91A095BD0DCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FF5A7FF4-D911-4FC7-BDB7-8AA214F387A1}
+		SolutionGuid = {584378A3-071F-473D-A65D-5BF0331F004A}
 	EndGlobalSection
 EndGlobal
