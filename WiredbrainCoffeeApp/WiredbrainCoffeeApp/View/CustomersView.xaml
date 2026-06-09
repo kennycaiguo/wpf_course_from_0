@@ -42,8 +42,8 @@
                 <Button Content="Delete" Width="75" Margin="0 10 10 10"
                         Command="{Binding DeleteCommand}"
                         />
-                <Button  Margin="0 10 10 10" Command="{Binding MoveNavigationCommand}">
-                    <Image Source="/Images/move.png"  Height="18" />
+                <Button  Margin="0 10 10 10" Width="75" Command="{Binding MoveNavigationCommand}">
+                    <Image Source="/Images/move.png" Height="18" />
                 </Button>
             </StackPanel>
             <ListView 

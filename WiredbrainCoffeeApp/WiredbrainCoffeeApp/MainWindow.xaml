@@ -29,8 +29,12 @@
         <!--主菜单-->
         <Menu FontSize="20">
             <MenuItem Header="_View">
-                <MenuItem Header="_Customers"/>
-                <MenuItem Header="_Products"/>
+                <MenuItem Header="_Customers"
+                          Command="{Binding SelectViewModelCommand}" 
+                          CommandParameter="{Binding CustomerViewModel}"/>
+                <MenuItem Header="_Products" 
+                          Command="{Binding SelectViewModelCommand}" 
+                          CommandParameter="{Binding ProductViewModel}"/>
             </MenuItem>
         </Menu>
         <!--Headers-->

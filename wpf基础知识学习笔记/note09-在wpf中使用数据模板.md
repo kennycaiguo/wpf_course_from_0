@@ -290,15 +290,66 @@
 
 
 
+## 回到MainViewModel，把产品视图模型赋值给选中视图模型变量
 
+![image-20260608113340756](./note09-在wpf中使用数据模板.assets/image-20260608113340756.png)
+
+## 运行程序，效果如下，因为我们只在这个视图里面添加了一个文本块
+
+![image-20260608113516746](./note09-在wpf中使用数据模板.assets/image-20260608113516746.png)
 
 # 11.创建SelectViewModelCommand
+
+## 这一节课我们需要创建选择视图模型命令
+
+### 1.打开MainViewModel.cs,添加一个SelectViewModelCommand属性，是DelegateCommand类型的，只需要getter不要setter
+
+![image-20260608114255249](./note09-在wpf中使用数据模板.assets/image-20260608114255249.png)
+
+
+
+### 2.在MainViewModel类的构造函数里面用它来接受一个DelegateCommand实例，注意，构造这个对象需要一个委托，我们把它起名为SelectViewModel，然后需要创建这个方法
+
+![image-20260608114643429](./note09-在wpf中使用数据模板.assets/image-20260608114643429.png)
+
+### 3.我们把函数移动到最后面，然后把obj为parameter，并且返回值个void，然后添加下面的代码
+
+![image-20260608155959763](./note09-在wpf中使用数据模板.assets/image-20260608155959763.png)
+
+
+
+### 4. 我们需要把那两个带下划线的私有字段改为public，如果使用私有的会有问题
+
+![image-20260608160250884](./note09-在wpf中使用数据模板.assets/image-20260608160250884.png)
+
+
+
+### 5. 然后把他们改为大写字母开头
+
+![image-20260608160601172](./note09-在wpf中使用数据模板.assets/image-20260608160601172.png)
+
+### 6. 然后给他们只添加getter
+
+![image-20260608160816703](./note09-在wpf中使用数据模板.assets/image-20260608160816703.png)
 
 
 
 # 12.将菜单项绑定到命令
 
+## 1.打开MainWindow.xaml,找到主菜单的位置，然后给他们添加命令绑定
 
+![image-20260608175149917](./note09-在wpf中使用数据模板.assets/image-20260608175149917.png)
 
+## 运行程序，选择Products，就会进入产品视图
 
+![image-20260608175245336](./note09-在wpf中使用数据模板.assets/image-20260608175245336.png)
 
+![image-20260608175304160](./note09-在wpf中使用数据模板.assets/image-20260608175304160.png)
+
+### 只是我们的产品视图还没有完成
+
+## 点击客户，又会进入客户视图
+
+![image-20260608175532271](./note09-在wpf中使用数据模板.assets/image-20260608175532271.png)
+
+![image-20260608175555014](./note09-在wpf中使用数据模板.assets/image-20260608175555014.png)
