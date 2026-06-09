@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 using WiredbrainCoffeeApp.Data;
+using WiredbrainCoffeeApp.Model;
 using WiredbrainCoffeeApp.ViewModel;
 
 namespace WiredbrainCoffeeApp
@@ -26,6 +27,7 @@ namespace WiredbrainCoffeeApp
             services.AddTransient<CustomerViewModel>();
             services.AddTransient<ProductViewModel>();
             services.AddTransient<ICustomerDataProvider, CustomerDataProvider>();
+            services.AddTransient<IProductDataProvider, ProductDataProvider>();
         }
 
         protected override void OnStartup(StartupEventArgs e)

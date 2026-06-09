@@ -19,8 +19,6 @@
     <Folder Include="Command\" />
     <Folder Include="Controls\" />
     <Folder Include="Converter\" />
-    <Folder Include="Data\" />
-    <Folder Include="Model\" />
     <Folder Include="Resources\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>

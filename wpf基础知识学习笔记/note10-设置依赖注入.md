@@ -130,3 +130,84 @@ namespace WiredbrainCoffeeApp
 
 # 4.注册并且使用其他类型
 
+## 1.我们需要在Model文件夹里面创建一个Product类，内容如下
+
+```
+namespace WiredbrainCoffeeApp.Model
+{
+    public class Product
+    {
+        public string? Name { get; set; } 
+        public string? Description { get; set; }  
+    }
+}
+
+```
+
+## 2.然后我们需要在Data文件夹里面创建一个ProductDataProvider类，代码如下
+
+```
+using WiredbrainCoffeeApp.Model;
+
+namespace WiredbrainCoffeeApp.Data
+{
+    public interface IProductDataProvider
+    {
+        Task<IEnumerable<Product>> getAllAsync();   
+    }
+    public class ProductDataProvider : IProductDataProvider
+    {
+        public async Task<IEnumerable<Product>?> getAllAsync()
+        {
+            await Task.Delay(100); // Simulate a bit of server work
+
+            return new List<Product>
+            {
+                new Product{Name="Cappuccino",Description="Espresso with milk and milk foam"},
+                new Product{Name="Doppio",Description="Double espresso"},
+                new Product{Name="Espresso",Description="Pure coffee to keep you awake! :-)"},
+                new Product{Name="Latte",Description="Cappuccino with more streamed milk"},
+                new Product{Name="Macchiato",Description="Espresso with milk foam"},
+                new Product{Name="Mocha",Description="Espresso with hot chocolate and milk foam"}
+            };
+        }
+    }
+}
+
+```
+
+## 3.然后转到App.xaml.cs,利用依赖注入来正常这个ProductDataProvider类供其他视图使用
+
+![image-20260609105016751](./note10-设置依赖注入.assets/image-20260609105016751.png)
+
+## 4.转到ProductDataProvider.cs视图模型类，在这里获取调用获取数据的方法
+
+### 4.1 给它添加一个构造函数，并且创建一个私有字段来接受传递过来的对象（依赖注入)
+
+![image-20260609110438454](./note10-设置依赖注入.assets/image-20260609110438454.png)
+
+### 4.2 然后我们在构造函数里面设置一个断点调试发现它的确有值，说明依赖注入有效
+
+![image-20260609110348138](./note10-设置依赖注入.assets/image-20260609110348138.png)
+
+### 4.3创建一个ObservableCollection\<Product>类型的属性Products,是一个只读属性，只有getter
+
+![image-20260609110946820](./note10-设置依赖注入.assets/image-20260609110946820.png)
+
+
+
+### 4.4重写基类的LoadAsync方法
+
+![image-20260609111810575](./note10-设置依赖注入.assets/image-20260609111810575.png)
+
+## 5.转到ProductsView.xaml中，我们来显示产品
+
+### 5.1把TextBlock删除，然后添加一个DataGrid
+
+![image-20260609112253735](./note10-设置依赖注入.assets/image-20260609112253735.png)
+
+## 运行程序，选择Products菜单，效果如下
+
+![image-20260609112407204](./note10-设置依赖注入.assets/image-20260609112407204.png)
+
+![image-20260609112438268](./note10-设置依赖注入.assets/image-20260609112438268.png)
