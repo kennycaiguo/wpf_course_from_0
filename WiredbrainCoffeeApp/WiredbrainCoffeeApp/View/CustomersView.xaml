@@ -59,12 +59,13 @@
         <!--Customer Detail-->
         <StackPanel  Grid.Column="1" Margin="10" Visibility="{Binding IsCustomerSelected,
             Converter={StaticResource BoolToVisitable}}">
-            
             <Label Content="First Name:" />
-            <TextBox Text="{Binding  Path=SelectedCustomer.FirstName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding  Path=SelectedCustomer.FirstName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     />
             <Label Content="Last Name:" />
-            <TextBox Text="{Binding  Path=SelectedCustomer.LastName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-            <CheckBox IsChecked="{Binding  Path=SelectedCustomer.IsDeveloper, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0 10 0 0" >
+            <TextBox Text="{Binding  Path=SelectedCustomer.LastName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox IsChecked="{Binding  Path=SelectedCustomer.IsDeveloper, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                      Margin="0 13 0 0" >
                 IsDeveloper
             </CheckBox>
         </StackPanel>
