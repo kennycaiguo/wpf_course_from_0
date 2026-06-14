@@ -13,7 +13,7 @@
             x:Key="NsToGcCon"/>
         <DataTemplate x:Key="CustDtTmp">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding FirstName}" FontWeight="Bold" />
+                <TextBlock Text="{Binding FirstName,ValidatesOnNotifyDataErrors=False}" FontWeight="Bold" />
                 <TextBlock Text="{Binding LastName}" Margin="10 0 0 0" />
             </StackPanel>
         </DataTemplate>
@@ -51,10 +51,6 @@
                       SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
                       Grid.Row="1" Margin="10 0 10 10" 
                       ItemTemplate="{StaticResource CustDtTmp}" />
-
-
-
-
         </Grid>
         <!--Customer Detail-->
         <StackPanel  Grid.Column="1" Margin="10" Visibility="{Binding IsCustomerSelected,
